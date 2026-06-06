@@ -1,0 +1,92 @@
+name: quick_shorts
+description: "A TikTok/Instagram Reels clone built with Flutter, GetX, and Firebase."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # ---------- State Management & Routing ----------
+  # GetX gives us reactive state, dependency injection, and named routing
+  # all in one package — perfect for a feature-focused app like this where
+  # we want minimal boilerplate and fast iteration.
+  get: ^4.6.6
+
+  # ---------- Firebase ----------
+  # Core is required by every Firebase plugin. Firestore stores video metadata
+  # (titles, likes, URLs). Storage is where the actual .mp4 files live.
+  firebase_core: ^3.13.0
+  cloud_firestore: ^5.6.7
+  firebase_storage: ^12.4.5
+
+  # ---------- Video Playback ----------
+  # The official Flutter video_player plugin — wraps ExoPlayer on Android
+  # and AVPlayer on iOS. Reliable and well-maintained.
+  video_player: ^2.9.3
+
+  # ---------- Caching ----------
+  # flutter_cache_manager handles disk caching with configurable max size
+  # and staleness. We wrap it in a custom CacheService to control cache keys
+  # and max storage (500MB, 7 days).
+  flutter_cache_manager: ^3.4.1
+
+  # ---------- Scroll-based Playback ----------
+  # VisibilityDetector tells us what fraction of a widget is on-screen,
+  # so we can auto-play when ≥80% visible and auto-pause otherwise.
+  visibility_detector: ^0.4.0+2
+
+  # ---------- Image Caching ----------
+  # CachedNetworkImage caches thumbnails to disk so they load instantly
+  # on repeat visits — used for the blurred placeholder behind loading videos.
+  cached_network_image: ^3.4.1
+
+  # ---------- UI Polish ----------
+  # Shimmer gives us those nice animated loading placeholders while
+  # we wait for the initial Firestore fetch to complete.
+  shimmer: ^3.0.0
+
+  # ---------- Upload Feature ----------
+  # image_picker gives us the native gallery/camera picker UI on both
+  # platforms — no custom picker needed, consistent with OS conventions.
+  image_picker: ^1.1.2
+
+  # video_thumbnail extracts a single frame from a video file as a JPEG.
+  # Uses FFmpeg on Android and AVAssetImageGenerator on iOS under the hood.
+  # We grab the frame at the 1-second mark for auto-generated thumbnails.
+  video_thumbnail: ^0.5.3
+
+  # path_provider is needed by video_thumbnail to find the temp directory
+  # where it writes the extracted thumbnail frame.
+  path_provider: ^2.1.5
+
+  cupertino_icons: ^1.0.8
+  flutter_native_splash: ^2.4.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  flutter_launcher_icons: ^0.14.1
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/logo/app_icon_with_bg.png"
+  min_sdk_version: 21
+
+flutter_native_splash:
+  color: "#080808" # Dark background matching the theme
+  image: "assets/logo/app_icon.png"
+  android: true
+  ios: true
+  fullscreen: true
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/logo/

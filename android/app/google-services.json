@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "455341952888",
+    "project_id": "quick-shorts-24b14",
+    "storage_bucket": "quick-shorts-24b14.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455341952888:android:171da32e231e5baf7a828d",
+        "android_client_info": {
+          "package_name": "com.example.quick_shorts"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBodyUcD2YEIRpNeXCg4skTMAGyM5em8M0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

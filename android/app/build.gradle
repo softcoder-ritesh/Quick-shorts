@@ -1,0 +1,48 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+    // Google Services plugin processes the google-services.json file and makes
+    // Firebase configuration available to the app at build time.
+    id "com.google.gms.google-services"
+}
+
+android {
+    namespace = "com.example.quick_shorts"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11
+    }
+
+    defaultConfig {
+        applicationId = "com.example.quick_shorts"
+        // Firebase and video_player both need API 23+ (Android 6.0).
+        // The default flutter.minSdkVersion is 21 which would cause runtime crashes
+        // on older devices when trying to initialize Firebase or decode video.
+        minSdkVersion = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+        // MultiDex is needed because Firebase + video_player + GetX together push
+        // us well past the 64K method limit for a single DEX file.
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
