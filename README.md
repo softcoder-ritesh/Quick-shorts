@@ -95,7 +95,13 @@ lib/
    ```
 
 3. **Configure Firebase:**
-   Ensure you have your `google-services.json` (Android) and `GoogleService-Info.plist` (iOS) in the correct directories as per the [FIREBASE_SETUP.md](./FIREBASE_SETUP.md).
+   Since `firebase_options.dart` contains API keys, it is intentionally excluded from this repository for security. You must generate your own:
+   - Create a project on the [Firebase Console](https://console.firebase.google.com/).
+   - Run the FlutterFire CLI command at the root of the project to connect your app:
+     ```bash
+     flutterfire configure
+     ```
+   - Ensure you have your `google-services.json` (Android) and `GoogleService-Info.plist` (iOS) configured. See [FIREBASE_SETUP.md](./FIREBASE_SETUP.md) for more details.
 
 4. **Run the app:**
    ```bash
